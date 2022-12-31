@@ -1,54 +1,71 @@
-//定义一个学生类
-//属性包括：学生编号、学生姓名、学生年龄
-//属性私有化，对外提供公开的set和get方法
-//提供无参构造和有参数构造方法
-//提供一个display()方法，通过该方法打印学生信息。
-//编写测试程序创建对象，调用display()方法。
 public class Test01 {
     public static void main(String[] args) {
-        Student s1 = new Student(1510060218,"张三",18);
-        s1.display();
+        Musician m1 = new Musician();
+        Musician m2 = new Musician("张三");
+
+        Instrument i1 = new erHu();
+        Instrument i2 = new piano();
+        Instrument i3 = new violin();
+
+        if (i1 instanceof erHu){
+            erHu i4 = (erHu) i1;
+            i4.playMusic();
+        }else if (i1 instanceof piano){
+            piano i5 = (piano) i1;
+            i5.playMusic();
+        }else if (i1 instanceof violin){
+            violin i6 = (violin) i1;
+            i6.playMusic();
+        }
+        m2.play(i1);
+
+
     }
 }
-class Student {
-    private int id;
+class Musician {
     private String name;
-    private int age;
-
-    public void display(){
-        System.out.println(" 该学生的学号为 " + id + " 姓名为 " + name + " 年龄为 " + age);
-    }
-
-    public Student() {
-
-    }
-    public Student(int id, String name, int age) {
-        this.id = id;
+    public Musician(){}
+    public Musician(String name){
         this.name = name;
-        this.age = age;
     }
-
-    public int getId() {
-        return id;
+    //setter and getter
+    public void setName(String name){
+        this.name = name;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
+    public String getName(){
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
+    public void play(Instrument i){
+        System.out.println(this.name + "乐手正在用"+i+"奏乐");
     }
+}
+class Instrument {
 
-    public int getAge() {
-        return age;
+    public void makeSound(){
+        System.out.println("乐器正在演奏");
     }
-
-    public void setAge(int age) {
-        this.age = age;
+}
+class erHu extends Instrument{
+    public void playMusic(){
+        System.out.println("二胡正在演奏二泉音乐~");
+    }
+    public String toString(){
+        return "二胡正在演奏二泉音乐~";
+    }
+}
+class piano extends Instrument{
+    public void playMusic(){
+        System.out.println("正在演奏肖邦的钢琴曲~");
+    }
+    public String toString(){
+        return "正在演奏肖邦的钢琴曲~";
+    }
+}
+class violin extends Instrument{
+    public void playMusic(){
+        System.out.println("正在演奏维瓦尔第的四季~");
+    }
+    public String toString(){
+        return "正在演奏维瓦尔第的四季~";
     }
 }
