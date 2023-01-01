@@ -1,0 +1,14 @@
+public class ControlHomework08{
+	
+	//求和 1+(1+2)+(1+2+3)+...+(1+2+3+4+...+100)
+
+	public static void main(String[] args){
+		int sum = 0;
+		for(int i = 1; i <= 100; i++){
+			for(int j = 0; j <= i; j++){
+				sum += j;
+			}		
+		}
+		System.out.println(sum);
+	}
+}
